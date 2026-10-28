@@ -1,0 +1,227 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum ReportStatus {
+  SUBMITTED // Saved, analysis not finished (or vision service was unreachable)
+  ANALYZING
+  VERIFIED // Scored by the priority engine
+  ROUTED // Email dispatched to the resolved authority
+  ACKNOWLEDGED
+  IN_PROGRESS
+  RESOLVED
+  REJECTED
+}
+
+enum PriorityLabel {
+  LOW
+  MEDIUM
+  HIGH
+  VERY_HIGH
+}
+
+enum Department {
+  SANITATION
+  HEALTH
+  POLLUTION_CONTROL
+  WATER
+  GENERAL
+}
+
+enum ZoneType {
+  HOSPITAL
+  SCHOOL
+  COLLEGE
+  WATER_BODY
+  FOOD_MARKET
+  RESIDENTIAL_DENSE
+  OTHER
+}
+
+enum EmailStatus {
+  DRAFT // Composed and awaiting the reporter's approval
+  DRY_RUN // Composed and logged, never handed to a provider
+  SENT
+  FAILED
+}
+
+// ---------------------------------------------------------------------------
+// Models
+// ---------------------------------------------------------------------------
+
+model AnonymousUser {
+  id         String   @id @default(cuid())
+  username   String   @unique
+  role       String   @default("ANONYMOUS")
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+  lastActive DateTime @default(now())
+
+  @@index([username])
+}
+
+model CivicReport {
+  id          String  @id @default(cuid())
+  type        String  @default("GARBAGE")
+  title       String
+  description String?
+
+  // Reporter
+  anonymousId String?
+  clerkUserId String?
+
+  // Evidence
+  imageUrl          String?
+  annotatedImageUrl String?
+
+  // Location
+  latitude  Float?
+  longitude Float?
+  address   String?
+  wardName  String?
+  city      String?
+
+  // Raw vision output (contract: GET /predict on the YOLOv8 service)
+  wasteType            String?
+  detections           Json? // detections[] as returned by /predict
+  categoryDistribution Json? // category_distribution[] as returned by /predict
+  totalObjects         Int?
+  totalCategories      Int?
+  maxConfidence        Float?
+
+  // Priority engine output
+  priorityScore  Float?
+  priorityLabel  PriorityLabel?
+  scoreBreakdown Json? // every subscore + multiplier + triggering POI
+  zoneMultiplier Float?
+  nearbyPois     Json?
+  recurrenceCount Int     @default(0)
+
+  // Routing
+  authorityId String?
+  authority   Authority? @relation(fields: [authorityId], references: [id])
+
+  // Lifecycle
+  status     ReportStatus @default(SUBMITTED)
+  routedAt   DateTime?
+  resolvedAt DateTime?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+
+  emails       EmailLog[]
+  statusEvents ReportStatusEvent[]
+
+  @@index([status])
+  @@index([priorityLabel])
+  @@index([createdAt])
+  @@index([latitude, longitude])
+}
+
+model Authority {
+  id          String     @id @default(cuid())
+  name        String
+  designation String?
+  department  Department @default(SANITATION)
+
+  // Jurisdiction
+  wardName String?
+  wardCode String?
+  zone     String?
+  city     String
+
+  // Contact
+  email    String
+  ccEmails String[] @default([])
+  phone    String?
+
+  // Escalation chain
+  escalationTier    Int        @default(1) // 1 = ward, 2 = zonal, 3 = commissioner
+  parentAuthorityId String?
+  parentAuthority   Authority? @relation("AuthorityEscalation", fields: [parentAuthorityId], references: [id])
+  children          Authority[] @relation("AuthorityEscalation")
+
+  // Demo-grade geo matching (point + radius; polygons are a later upgrade)
+  centroidLat   Float?
+  centroidLng   Float?
+  radiusMeters  Int     @default(3000)
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  reports CivicReport[]
+
+  @@index([wardName])
+  @@index([department])
+  @@index([city])
+}
+
+model SensitiveZone {
+  id           String   @id @default(cuid())
+  name         String
+  type         ZoneType
+  latitude     Float
+  longitude    Float
+  radiusMeters Int      @default(300)
+  weight       Float    @default(1.2) // multiplier applied at zero distance
+  city         String?
+  createdAt    DateTime @default(now())
+
+  @@index([type])
+  @@index([latitude, longitude])
+}
+
+model EmailLog {
+  id       String @id @default(cuid())
+  reportId String
+  report   CivicReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  // intendedTo is the authority the router actually resolved.
+  // actualTo is where the message was delivered — they differ whenever
+  // EMAIL_OVERRIDE_TO is set, which is how the demo stays safe.
+  intendedTo String
+  actualTo   String
+  ccEmails   String[] @default([])
+
+  subject  String
+  body     String  @db.Text
+  // The HTML part, which renders the evidence images inline. Null for
+  // notices composed before HTML delivery existed.
+  bodyHtml String? @db.Text
+  mode     String // dry_run | sandbox | live
+
+  status            EmailStatus
+  providerMessageId String?
+  error             String?
+
+  sentAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([reportId])
+  @@index([status])
+}
+
+model ReportStatusEvent {
+  id       String @id @default(cuid())
+  reportId String
+  report   CivicReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  fromStatus ReportStatus?
+  toStatus   ReportStatus
+  note       String?
+  actor      String? // "system" | anonymousId | clerkUserId
+
+  createdAt DateTime @default(now())
+
+  @@index([reportId])
+}
