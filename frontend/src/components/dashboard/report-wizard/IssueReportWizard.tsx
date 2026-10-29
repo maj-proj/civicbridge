@@ -389,6 +389,7 @@ export function IssueReportWizard({ track }: { track: IssueTrackConfig }) {
                   locationText={locationText}
                   latitude={latitude}
                   longitude={longitude}
+                  issueType={track.endpoint.includes("pothole") ? "pothole" : "garbage"}
                   placeholder={track.landmarkPlaceholder}
                   locating={locating}
                   onCaptureLocation={captureLocation}

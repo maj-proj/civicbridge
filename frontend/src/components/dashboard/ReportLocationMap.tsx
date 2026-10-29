@@ -8,12 +8,14 @@ import {
   loadGoogleMapsScript,
   getGoogleMapsApiKey,
 } from "@/lib/geo/googleMapsLoader";
+import { getCustomMarkerIcon } from "@/lib/geo/markerIcons";
 
 interface ReportLocationMapProps {
   latitude: number | null;
   longitude: number | null;
   address?: string | null;
   wardName?: string | null;
+  issueType?: string;
 }
 
 export function ReportLocationMap({
@@ -21,6 +23,7 @@ export function ReportLocationMap({
   longitude,
   address,
   wardName,
+  issueType,
 }: ReportLocationMapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [mapsState, setMapsState] = useState<"loading" | "ready" | "no_key" | "error">("loading");
@@ -62,6 +65,7 @@ export function ReportLocationMap({
           position: pos,
           map,
           title: address || wardName || "Report Location",
+          icon: getCustomMarkerIcon(googleInstance.maps, issueType),
         });
       })
       .catch((err) => {
@@ -73,7 +77,7 @@ export function ReportLocationMap({
     return () => {
       isCancelled = true;
     };
-  }, [hasCoords, latitude, longitude, address, wardName]);
+  }, [hasCoords, latitude, longitude, address, wardName, issueType]);
 
   if (!hasCoords) return null;
 
@@ -125,4 +129,3 @@ export function ReportLocationMap({
     </Card>
   );
 }
-

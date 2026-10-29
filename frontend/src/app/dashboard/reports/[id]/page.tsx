@@ -170,6 +170,7 @@ export default async function ReportDetailPage({ params }: PageProps) {
               longitude={report.longitude}
               address={report.address}
               wardName={report.wardName}
+              issueType={report.type}
             />
           )}
           <Card size="sm">

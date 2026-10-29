@@ -16,11 +16,13 @@ import {
   getGoogleMapsApiKey,
   onGoogleMapsAuthFailure,
 } from "@/lib/geo/googleMapsLoader";
+import { getCustomMarkerIcon } from "@/lib/geo/markerIcons";
 
 interface LocationMapPickerProps {
   locationText: string;
   latitude: string;
   longitude: string;
+  issueType?: "garbage" | "pothole";
   onChange: (update: {
     locationText?: string;
     latitude?: string;
@@ -41,6 +43,7 @@ export function LocationMapPicker({
   locationText,
   latitude,
   longitude,
+  issueType = "garbage",
   onChange,
   placeholder = "Search for an address, road, or landmark...",
   locating,
@@ -56,6 +59,7 @@ export function LocationMapPicker({
   const markerRef = useRef<google.maps.Marker | null>(null);
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
 
+  const isPothole = issueType === "pothole";
   const latNum = parseFloat(latitude);
   const lngNum = parseFloat(longitude);
   const hasValidCoords =
@@ -126,13 +130,15 @@ export function LocationMapPicker({
         });
         mapRef.current = map;
 
-        // Initialize Marker pointer
+        // Initialize Custom SVG Marker pointer
+        const customIcon = getCustomMarkerIcon(googleInstance.maps, issueType);
         const marker = new googleInstance.maps.Marker({
           position: initialCenter,
           map: hasValidCoords ? map : null, // visible only if valid coords exist
           draggable: true,
           animation: googleInstance.maps.Animation.DROP,
-          title: "Incident location pointer",
+          title: isPothole ? "Pothole defect location pointer" : "Garbage incident location pointer",
+          icon: customIcon,
         });
         markerRef.current = marker;
 
@@ -221,7 +227,7 @@ export function LocationMapPicker({
         markerRef.current.setMap(null);
       }
     };
-  }, []); // Run on mount
+  }, [issueType, isPothole]); // Re-run if issueType changes
 
   // Sync external coordinates changes (e.g. from "Use my location" button) to Google Map & Marker
   useEffect(() => {
@@ -267,7 +273,10 @@ export function LocationMapPicker({
           <div className="flex items-center gap-2">
             <FieldLabel htmlFor="places-search">Place & Landmark</FieldLabel>
             {mapsState === "ready" && (
-              <Badge variant="secondary" className="text-[10px] uppercase tracking-wider font-semibold">
+              <Badge
+                variant="secondary"
+                className="text-[10px] uppercase tracking-wider font-semibold"
+              >
                 Google Places
               </Badge>
             )}
@@ -315,10 +324,10 @@ export function LocationMapPicker({
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <span className="text-xs font-medium text-muted-foreground">
-            Interactive Map Pointer
+            Interactive Map Pointer ({isPothole ? "Pothole pin" : "Garbage pin"})
           </span>
           {hasValidCoords && (
-            <span className="text-xs text-emerald-600 font-mono">
+            <span className={`text-xs font-mono ${isPothole ? "text-amber-600" : "text-emerald-600"}`}>
               ● Pointer set at {latNum.toFixed(4)}, {lngNum.toFixed(4)}
             </span>
           )}
