@@ -46,6 +46,7 @@ import {
 import { Stepper, type Step } from "./Stepper";
 import { AnalysisProgress } from "./AnalysisProgress";
 import { NoticePreparing, NoticeStep } from "./NoticeStep";
+import { LocationMapPicker } from "./LocationMapPicker";
 import type {
   DeliveryResult,
   EmailDraft,
@@ -384,64 +385,20 @@ export function IssueReportWizard({ track }: { track: IssueTrackConfig }) {
                   )}
                 </Field>
 
-                <Field>
-                  <div className="flex items-center justify-between gap-2">
-                    <FieldLabel htmlFor="latitude">Coordinates</FieldLabel>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="xs"
-                      onClick={captureLocation}
-                      disabled={locating}
-                    >
-                      {locating ? <Spinner /> : <Crosshair />}
-                      {locating ? "Locating" : "Use my location"}
-                    </Button>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2">
-                    <Input
-                      id="latitude"
-                      inputMode="decimal"
-                      value={latitude}
-                      onChange={(e) => setLatitude(e.target.value)}
-                      placeholder="Latitude — 12.911600"
-                    />
-                    <Input
-                      inputMode="decimal"
-                      value={longitude}
-                      onChange={(e) => setLongitude(e.target.value)}
-                      placeholder="Longitude — 77.641200"
-                      aria-label="Longitude"
-                    />
-                  </div>
-
-                  {geoError ? (
-                    <FieldDescription className="text-destructive">
-                      {geoError}
-                    </FieldDescription>
-                  ) : (
-                    <FieldDescription>
-                      Zone scoring and ward routing both need coordinates, not
-                      just a landmark name. Without them the report is still
-                      saved, but it cannot be escalated or routed.
-                    </FieldDescription>
-                  )}
-                </Field>
-
-                <Field>
-                  <FieldLabel htmlFor="landmark">Landmark</FieldLabel>
-                  <div className="relative">
-                    <MapPin className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input
-                      id="landmark"
-                      value={locationText}
-                      onChange={(e) => setLocationText(e.target.value)}
-                      placeholder={track.landmarkPlaceholder}
-                      className="pl-9"
-                    />
-                  </div>
-                </Field>
+                <LocationMapPicker
+                  locationText={locationText}
+                  latitude={latitude}
+                  longitude={longitude}
+                  placeholder={track.landmarkPlaceholder}
+                  locating={locating}
+                  onCaptureLocation={captureLocation}
+                  geoError={geoError}
+                  onChange={({ locationText: newText, latitude: newLat, longitude: newLng }) => {
+                    if (newText !== undefined) setLocationText(newText);
+                    if (newLat !== undefined) setLatitude(newLat);
+                    if (newLng !== undefined) setLongitude(newLng);
+                  }}
+                />
 
                 <Field>
                   <FieldLabel htmlFor="details">Additional details</FieldLabel>

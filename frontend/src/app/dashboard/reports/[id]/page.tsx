@@ -18,6 +18,7 @@ import {
   type CategoryRow,
 } from "@/components/dashboard/ReportInsights";
 import { StatusAdvanceButton } from "@/components/dashboard/StatusAdvanceButton";
+import { ReportLocationMap } from "@/components/dashboard/ReportLocationMap";
 import { STATUS_SEQUENCE, statusLabel, statusStyle } from "@/lib/reportStatus";
 import { getReportDetail } from "@/lib/reports/queries";
 import { cn } from "@/lib/utils";
@@ -163,6 +164,14 @@ export default async function ReportDetailPage({ params }: PageProps) {
         </div>
 
         <div className="space-y-6 lg:col-span-2">
+          {report.latitude !== null && report.longitude !== null && (
+            <ReportLocationMap
+              latitude={report.latitude}
+              longitude={report.longitude}
+              address={report.address}
+              wardName={report.wardName}
+            />
+          )}
           <Card size="sm">
             <CardHeader>
               <CardTitle>Routed authority</CardTitle>
