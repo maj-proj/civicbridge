@@ -18,14 +18,28 @@ export interface SubmitResponse {
     address: string | null;
     wardName: string | null;
   };
+  /**
+   * Shape depends on the track: garbage reports material, potholes report
+   * defect severity. Fields absent on one side are simply undefined.
+   */
   analysis: {
     image_analysis: {
       total_objects_detected: number;
-      total_categories_detected: number;
+      total_categories_detected?: number;
       total_area_ratio?: number;
+      issue_detected?: boolean;
+      worst_severity_score?: number;
+      worst_severity_level?: "Low" | "Medium" | "High";
     };
-    detections: Array<{ class: string; confidence: number; category: string }>;
-    category_distribution: CategoryRow[];
+    detections: Array<{
+      class: string;
+      confidence: number;
+      category?: string;
+      object_count?: number;
+      severity_score?: number;
+      severity_level?: "Low" | "Medium" | "High";
+    }>;
+    category_distribution?: CategoryRow[];
   } | null;
   priority: {
     score: number;

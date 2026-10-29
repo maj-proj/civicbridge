@@ -532,6 +532,20 @@ function AnalysisResult({
   // A notice can only be drafted against a saved, scored report.
   const canNotify = persisted && Boolean(report.id) && Boolean(priority);
 
+  // Pothole detections carry a severity; waste detections do not.
+  const defects = (analysis?.detections ?? []).filter(
+    (
+      row
+    ): row is (typeof row) & {
+      severity_score: number;
+      severity_level: "Low" | "Medium" | "High";
+    } => typeof row.severity_score === "number" && Boolean(row.severity_level)
+  );
+
+  const materialClasses = (analysis?.detections ?? []).filter(
+    (row) => typeof row.severity_score !== "number"
+  );
+
   return (
     <div className="space-y-4">
       <Card>
@@ -569,21 +583,67 @@ function AnalysisResult({
             </div>
           )}
 
-          {analysis && analysis.category_distribution.length > 0 && (
+          {/* Garbage: what the waste is made of. */}
+          {analysis && (analysis.category_distribution?.length ?? 0) > 0 && (
             <section className="space-y-3">
               <h2 className="text-sm font-medium">
                 Material composition
                 <span className="ml-1.5 font-normal text-muted-foreground">
-                  {plural(analysis.image_analysis.total_objects_detected, "object")}{" "}
-                  ·{" "}
-                  {plural(
-                    analysis.image_analysis.total_categories_detected,
-                    "category",
-                    "categories"
+                  {plural(analysis.image_analysis.total_objects_detected, "object")}
+                  {typeof analysis.image_analysis.total_categories_detected ===
+                    "number" && (
+                    <>
+                      {" · "}
+                      {plural(
+                        analysis.image_analysis.total_categories_detected,
+                        "category",
+                        "categories"
+                      )}
+                    </>
                   )}
                 </span>
               </h2>
-              <CompositionBars rows={analysis.category_distribution} />
+              <CompositionBars rows={analysis.category_distribution ?? []} />
+            </section>
+          )}
+
+          {/* Potholes: how bad each defect is. */}
+          {analysis && defects.length > 0 && (
+            <section className="space-y-3">
+              <h2 className="text-sm font-medium">
+                Detected defects
+                <span className="ml-1.5 font-normal text-muted-foreground">
+                  {plural(defects.length, "defect")}
+                  {analysis.image_analysis.worst_severity_level
+                    ? ` · worst ${analysis.image_analysis.worst_severity_level.toLowerCase()}`
+                    : ""}
+                </span>
+              </h2>
+
+              <ul className="divide-y divide-border">
+                {defects.map((defect, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center justify-between gap-3 py-2 first:pt-0 last:pb-0"
+                  >
+                    <span className="text-sm">
+                      {defect.class}{" "}
+                      <span className="text-muted-foreground">#{index + 1}</span>
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <span className="text-xs tabular-nums text-muted-foreground">
+                        {defect.confidence.toFixed(0)}% confident
+                      </span>
+                      <Badge
+                        variant="outline"
+                        className={severityStyle(defect.severity_level)}
+                      >
+                        {defect.severity_level} · {defect.severity_score}
+                      </Badge>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
 
@@ -594,11 +654,11 @@ function AnalysisResult({
             </section>
           )}
 
-          {analysis && analysis.detections.length > 0 && (
+          {materialClasses.length > 0 && (
             <section className="space-y-2">
               <h2 className="text-sm font-medium">Detected classes</h2>
               <div className="flex flex-wrap gap-1.5">
-                {analysis.detections.map((d) => (
+                {materialClasses.map((d) => (
                   <Badge key={d.class} variant="outline">
                     {d.class}
                     <span className="tabular-nums text-muted-foreground">
@@ -762,6 +822,13 @@ function SentStep({
       </div>
     </div>
   );
+}
+
+/** Severity chips reuse the priority ramp so the colours mean one thing. */
+function severityStyle(level: "Low" | "Medium" | "High"): string {
+  if (level === "High") return "border-rose-200 bg-rose-50 text-rose-700";
+  if (level === "Medium") return "border-amber-200 bg-amber-50 text-amber-700";
+  return "border-border bg-muted text-muted-foreground";
 }
 
 function plural(count: number, singular: string, pluralForm?: string) {
