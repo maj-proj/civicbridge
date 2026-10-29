@@ -106,6 +106,47 @@
   }
 }
 
+/*
+ * News ticker.
+ *
+ * The track holds the headlines twice over, so shifting it by half its own
+ * width returns it to the starting frame — a seamless loop from one
+ * animation, with no JavaScript measuring widths. Both copies must be
+ * identical for this to hold; see NewsTicker.
+ */
+@keyframes news-ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.news-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: news-ticker-scroll var(--news-ticker-duration, 60s) linear infinite;
+  will-change: transform;
+}
+
+/* Let the reader stop the crawl to actually read, or click, a headline. */
+.news-ticker:hover .news-ticker-track,
+.news-ticker:focus-within .news-ticker-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-ticker-track {
+    animation: none;
+  }
+
+  /* With the crawl stopped, the overflow has to be reachable by hand. */
+  .news-ticker .news-ticker-track {
+    overflow-x: auto;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

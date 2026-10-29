@@ -21,15 +21,20 @@ import {
 import { Item, ItemContent, ItemDescription, ItemTitle } from "@/components/ui/item";
 import { PageHeader } from "@/components/dashboard/PageHeader";
 import { PriorityBadge, PRIORITY_ORDER } from "@/components/dashboard/PriorityBadge";
+import { NewsTicker } from "@/components/dashboard/news/NewsTicker";
 import { statusLabel, statusStyle } from "@/lib/reportStatus";
 import { getReportStats, listReports } from "@/lib/reports/queries";
+import { fetchCivicNews } from "@/lib/news/fetchCivicNews";
 
 export const dynamic = "force-dynamic";
 
 export default async function DashboardOverviewPage() {
-  const [stats, { reports }] = await Promise.all([
+  // fetchCivicNews resolves to an empty feed rather than throwing, so a news
+  // provider being down cannot take the overview down with it.
+  const [stats, { reports }, news] = await Promise.all([
     getReportStats(),
     listReports({ sort: "recent", limit: 5 }),
+    fetchCivicNews({ topic: "all", limit: 12 }),
   ]);
 
   return (
@@ -56,6 +61,8 @@ export default async function DashboardOverviewPage() {
           </AlertDescription>
         </Alert>
       )}
+
+      <NewsTicker items={news.items} />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat label="Total reports" value={stats.total} />
