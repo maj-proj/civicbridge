@@ -161,3 +161,46 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted-foreground);
 }
+
+
+/* Google Places Autocomplete dropdown styling */
+.pac-container {
+  z-index: 99999 !important;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  font-family: var(--font-sans);
+  background-color: var(--card);
+  margin-top: 4px;
+}
+
+.pac-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-top: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 0.875rem;
+}
+
+.pac-item:first-child {
+  border-top: none;
+}
+
+.pac-item:hover,
+.pac-item-selected {
+  background-color: var(--muted);
+}
+
+.pac-matched {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.pac-item-query {
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+
+.pac-icon {
+  margin-top: 2px;
+}
