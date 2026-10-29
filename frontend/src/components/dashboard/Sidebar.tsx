@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Building2,
-  ExternalLink,
   LayoutDashboard,
+  Newspaper,
   Radio,
   ScrollText,
   TrafficCone,
@@ -49,11 +49,7 @@ const NAV: Array<{
     items: [
       { label: "Public feed", href: "/dashboard/public-feed", icon: Radio },
       { label: "My reports", href: "/dashboard/reports", icon: ScrollText },
-      {
-        label: "Government portals",
-        href: "/dashboard/portal-redirection",
-        icon: ExternalLink,
-      },
+      { label: "Civic news", href: "/dashboard/news", icon: Newspaper },
     ],
   },
 ];
