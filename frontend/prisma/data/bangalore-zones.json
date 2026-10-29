@@ -1,0 +1,982 @@
+[
+  {
+    "name": "Acharya Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 13.0857201,
+    "longitude": 77.4818588,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Acharya Institute of Technology, Acharya Dr Sarvepalli Radhakrishnan Road, Sasiveghatta, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 560107, India"
+  },
+  {
+    "name": "Alliance University",
+    "type": "COLLEGE",
+    "latitude": 12.7297587,
+    "longitude": 77.7087603,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Alliance University, Anekal Main Road, Kammasandra Agrahara, Avadadenahalli, Anekal, Bengaluru Urban, Karnataka, 562106, India"
+  },
+  {
+    "name": "AMC Engineering College",
+    "type": "COLLEGE",
+    "latitude": 12.8289678,
+    "longitude": 77.5889693,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "AMC Engineering College, Bannerghatta Road, Doddakammanahalli, Kalkere, Bengaluru, Anekal, Bengaluru Urban, Karnataka, 560083, India"
+  },
+  {
+    "name": "Bangalore Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.9551259,
+    "longitude": 77.5741985,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Bangalore Institute of Technology, Krishna Rajendra Road, VV Puram, V.V Puram, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560004, India"
+  },
+  {
+    "name": "Bangalore University, Jnana Bharathi",
+    "type": "COLLEGE",
+    "latitude": 12.942176,
+    "longitude": 77.505647,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "BUC Ladies Hostel, University Road, Jnana Bharathi, Jnana Bharathi Ward, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560056, India"
+  },
+  {
+    "name": "BMS College of Engineering",
+    "type": "COLLEGE",
+    "latitude": 12.941559,
+    "longitude": 77.5659889,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "BMS College of Engineering, 2nd Cross Road, Mount Joy, Hanumantha Nagar, Sunkenahalli, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560019, India"
+  },
+  {
+    "name": "BMS Institute of Technology and Management",
+    "type": "COLLEGE",
+    "latitude": 13.1337434,
+    "longitude": 77.5681741,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "BMS Institute of Technology and Management, Doddaballapur Road, Raja Kempegowda Ward, Avalahalli, Yelahanka taluku, Bengaluru Urban, Karnataka, 560064, India"
+  },
+  {
+    "name": "BNM Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.921883,
+    "longitude": 77.5675933,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "BNM Institute of Technology, 28th Cross Road, Dharmagiri Ward, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560070, India"
+  },
+  {
+    "name": "Cambridge Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 13.0118325,
+    "longitude": 77.7053377,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Cambridge Institute of Technology, Basavanapura Main Road, Medahalli, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560036, India"
+  },
+  {
+    "name": "Christ University, Hosur Road",
+    "type": "COLLEGE",
+    "latitude": 12.9356334,
+    "longitude": 77.6059101,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Christ University Audi Block, Hosur Road, Lakkasandra, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560029, India"
+  },
+  {
+    "name": "City Engineering College",
+    "type": "COLLEGE",
+    "latitude": 12.8887621,
+    "longitude": 77.5505721,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "City Engineering College, Pipeline Road, Anjanapura, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560062, India"
+  },
+  {
+    "name": "CMR Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.9666543,
+    "longitude": 77.7116234,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "CMR Institute of Technology, 4th Cross Road, AECS Layout A Block, EPIP Zone, Bharath Aikya Ward, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560037, India"
+  },
+  {
+    "name": "Don Bosco Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.8822649,
+    "longitude": 77.4449417,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Don Bosco Institute of Technology, Bengaluru-Mysuru Expressway, Gerupalya, Kumbalagodu, Bangalore South, Bengaluru Urban, Karnataka, 560074, India"
+  },
+  {
+    "name": "Dr. Ambedkar Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.9645978,
+    "longitude": 77.5065863,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Dr. Ambedkar Institute of Technology, 5th Cross Street, Vinayaka Layout, Mallathahalli, Vinayaka Layout, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560072, India"
+  },
+  {
+    "name": "Global Academy of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.9272239,
+    "longitude": 77.5262876,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Global Academy of Technology, Global College Road, Aditya Layout, Bangarappa Nagara, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560098, India"
+  },
+  {
+    "name": "HKBK College of Engineering",
+    "type": "COLLEGE",
+    "latitude": 13.036045,
+    "longitude": 77.6201041,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "HKBK College of Engineering, 3rd Cross Road, Govindapura, Nagavara, Bengaluru North City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560045, India"
+  },
+  {
+    "name": "Impact College of Engineering and Applied Sciences",
+    "type": "COLLEGE",
+    "latitude": 13.0534682,
+    "longitude": 77.5810379,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Impact College of Engineering and Applied Sciences, 1st A Cross Road, Maruthi Nagara, Badrappa Layout, Rajiv Gandhi Nagar, Bengaluru North City Corporation, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 560092, India"
+  },
+  {
+    "name": "Indian Institute of Management Bangalore",
+    "type": "COLLEGE",
+    "latitude": 12.8955829,
+    "longitude": 77.6026219,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Indian Institute of Management Bangalore, Bannerghatta Road, Vijaya Bank Layout, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560076, India"
+  },
+  {
+    "name": "Indian Institute of Science",
+    "type": "COLLEGE",
+    "latitude": 13.0222347,
+    "longitude": 77.5671832,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Indian Institute of Science, CV Raman Road, Malleswaram, Malleshwaram, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560012, India"
+  },
+  {
+    "name": "Jain University, Jayanagar",
+    "type": "COLLEGE",
+    "latitude": 12.9181825,
+    "longitude": 77.5918533,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Jain University, Jain College Road, Marenahalli, Jayanagar 9th Block, Pattabhirama Nagara, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560041, India"
+  },
+  {
+    "name": "JSS Academy of Technical Education, Bengaluru",
+    "type": "COLLEGE",
+    "latitude": 12.9025783,
+    "longitude": 77.5051451,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "JSS Academy of Technical Education, Dr. Vishnuvardhan Road, Reflex Layout, Hemmigepura, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560060, India"
+  },
+  {
+    "name": "Jyoti Nivas College",
+    "type": "COLLEGE",
+    "latitude": 12.9352234,
+    "longitude": 77.6142374,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Jyoti Nivas College, 80 Feet Road, Kormangala West, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560095, India"
+  },
+  {
+    "name": "Kristu Jayanti College",
+    "type": "COLLEGE",
+    "latitude": 13.058277,
+    "longitude": 77.6422554,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Kristu Jayanti University, K. Narayanapura Main Road, LBS Nagar, K Narayanapura, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560077, India"
+  },
+  {
+    "name": "M S Ramaiah Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 13.0309207,
+    "longitude": 77.5647436,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "M S Ramaiah Institute of Technology, 6th Main Road, Aramane Nagara, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560054, India"
+  },
+  {
+    "name": "Mount Carmel College",
+    "type": "COLLEGE",
+    "latitude": 12.9932859,
+    "longitude": 77.5878406,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Mount Carmel College, Palace Road, Chakravarty Layout, Vasanth Nagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560052, India"
+  },
+  {
+    "name": "MVJ College of Engineering",
+    "type": "COLLEGE",
+    "latitude": 12.984887,
+    "longitude": 77.7622799,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "M V Jayaram College of Engineering, Channasandra Main Road, Maithri Layout, Kadugodi, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560067, India"
+  },
+  {
+    "name": "National Law School of India University",
+    "type": "COLLEGE",
+    "latitude": 12.9529035,
+    "longitude": 77.5158003,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "National Law School of India University, Gandhi Marg, Teacher's Colony, Nagarbhavi, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560056, India"
+  },
+  {
+    "name": "New Horizon College of Engineering",
+    "type": "COLLEGE",
+    "latitude": 12.9343108,
+    "longitude": 77.6925122,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "New Horizon College of Engineering, Service Road, Kariyammana Agrahara, Kaadubeesanahalli, Panathur, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560103, India"
+  },
+  {
+    "name": "Nitte Meenakshi Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 13.1288782,
+    "longitude": 77.5872496,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Nitte Meenakshi Institute of Technology, NITTE Meenakshi College Road, Akash Ward, Bengaluru North City Corporation, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 560063, India"
+  },
+  {
+    "name": "NMKRV College for Women",
+    "type": "COLLEGE",
+    "latitude": 12.9323472,
+    "longitude": 77.5814062,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "NMKRV College, Aurobindo Marg, Byrasandra, Jayanagar 3rd Block, Byrasandra, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560011, India"
+  },
+  {
+    "name": "PES University, Banashankari",
+    "type": "COLLEGE",
+    "latitude": 12.9415238,
+    "longitude": 77.5543245,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "PES Pre-University College, 18th Main Road, Banashankari 1st Stage, Ashoka Nagara, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560050, India"
+  },
+  {
+    "name": "Presidency University, Bengaluru",
+    "type": "COLLEGE",
+    "latitude": 12.9655881,
+    "longitude": 77.6036377,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Presidency University, Myrtle Lane, Arab Lines, Ashok Nagar, Ashokanagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560025, India"
+  },
+  {
+    "name": "R V College of Engineering",
+    "type": "COLLEGE",
+    "latitude": 12.9232191,
+    "longitude": 77.5006587,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "R. V. College of Engineering, RV Univ Road, Pattanagere, Mylasandra, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+  },
+  {
+    "name": "REVA University",
+    "type": "COLLEGE",
+    "latitude": 13.1154027,
+    "longitude": 77.6357699,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "REVA University, Bellahalli Main Road, Kogilu, Bengaluru North City Corporation, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 560064, India"
+  },
+  {
+    "name": "RNS Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.9006694,
+    "longitude": 77.5178581,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "RNS Institute of Technology, NICE Expressway, Bangarappa Nagara, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560098, India"
+  },
+  {
+    "name": "Sambhram Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 13.0895405,
+    "longitude": 77.5458419,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Sambhram Institute of Technology, Amba Bhavani Road, Sector 3, Doddabettahalli, Bengaluru North City Corporation, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 560097, India"
+  },
+  {
+    "name": "Sapthagiri College of Engineering",
+    "type": "COLLEGE",
+    "latitude": 13.0674701,
+    "longitude": 77.5043645,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Sapthagiri College of Engineering, Hanumanthe Gowder Main Road, Geleyara Balaga Layout, Abbigere, Bengaluru North City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560015, India"
+  },
+  {
+    "name": "Sir M Visvesvaraya Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 13.1510057,
+    "longitude": 77.6099657,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "sir m visvesvaraya institute of technology main building, Sir MVIT College Road, Nellukunte, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 562157, India"
+  },
+  {
+    "name": "SJB Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.8990538,
+    "longitude": 77.4963065,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "SJB Institute of Technology, BGS Road, Hemmigepura, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560060, India"
+  },
+  {
+    "name": "St. Joseph's University",
+    "type": "COLLEGE",
+    "latitude": 12.9628689,
+    "longitude": 77.5967951,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "St. Joseph's University, Richmond Circle Flyover, Sampangirama Nagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560027, India"
+  },
+  {
+    "name": "Surana College",
+    "type": "COLLEGE",
+    "latitude": 12.9364188,
+    "longitude": 77.5782324,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Surana College, South End Road, Yediyuru, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560004, India"
+  },
+  {
+    "name": "T John Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.8493365,
+    "longitude": 77.5881985,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "T John College, Bannerghatta Road, Gottigere, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560083, India"
+  },
+  {
+    "name": "The Oxford College of Engineering",
+    "type": "COLLEGE",
+    "latitude": 12.9020523,
+    "longitude": 77.631261,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "The Oxford College of Engineering, Service Road, Hongasandra, Garvebavi Palya, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560068, India"
+  },
+  {
+    "name": "Vemana Institute of Technology",
+    "type": "COLLEGE",
+    "latitude": 12.929616,
+    "longitude": 77.6227302,
+    "radiusMeters": 500,
+    "weight": 1.45,
+    "city": "Bengaluru",
+    "matchedName": "Vemana Institute of Technology, 5th Cross Road, Koramangala 3rd Block, Kormangala East, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560034, India"
+  },
+  {
+    "name": "Apollo Hospital, Bannerghatta Road",
+    "type": "HOSPITAL",
+    "latitude": 12.8962983,
+    "longitude": 77.5982851,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Apollo Hospital, Bannerghatta Road, Panduranga Nagar, Arekere, Doresanipalya, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560076, India"
+  },
+  {
+    "name": "Aster CMI Hospital",
+    "type": "HOSPITAL",
+    "latitude": 13.0545589,
+    "longitude": 77.5916468,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Aster CMI Hospital, Bellary Road, Sahakaranagara, Rajiv Gandhi Nagar, Bengaluru North City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560092, India"
+  },
+  {
+    "name": "Bangalore Baptist Hospital",
+    "type": "HOSPITAL",
+    "latitude": 13.0357887,
+    "longitude": 77.589498,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Bangalore Baptist Hospital Blood Bank, Bellary Road, Anand Nagar Colony, Hebbal, Bengaluru North City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560024, India"
+  },
+  {
+    "name": "Bowring and Lady Curzon Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.983343,
+    "longitude": 77.6046868,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Bowring and Lady Curzon Hospitals, Lady Curzon Road, Tasker Town, Shivajinagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+  },
+  {
+    "name": "Chinmaya Mission Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.9779063,
+    "longitude": 77.6461909,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Chinmaya Mission Hospital, 1st Cross Road, Defence Colony, Thippasandra, Indiranagar, Bengaluru Central City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560038, India"
+  },
+  {
+    "name": "Cloudnine Hospital, Jayanagar",
+    "type": "HOSPITAL",
+    "latitude": 12.8832909,
+    "longitude": 77.5500857,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Cloudnine Hospital, 766, Kanakapura Road, Narayana Nagara, Anjanapura, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560062, India"
+  },
+  {
+    "name": "Fortis Hospital, Bannerghatta Road",
+    "type": "HOSPITAL",
+    "latitude": 12.8947508,
+    "longitude": 77.5986762,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Fortis Hospitals, Bannerghatta Road, Bannerghatta Road, Vijaya Bank Layout, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560076, India"
+  },
+  {
+    "name": "Fortis Hospital, Cunningham Road",
+    "type": "HOSPITAL",
+    "latitude": 12.9885488,
+    "longitude": 77.5945745,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Fortis Hospitals Limited, Bengaluru Urban, Cunningham Road, Kaverappa Layout, Vasanth Nagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560052, India"
+  },
+  {
+    "name": "HOSMAT Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.9691122,
+    "longitude": 77.6133095,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Hosmat Hospital, Magrath Road, Corporation Quarters, Ashok Nagar, Ashokanagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560025, India"
+  },
+  {
+    "name": "Indira Gandhi Institute of Child Health",
+    "type": "HOSPITAL",
+    "latitude": 12.9371781,
+    "longitude": 77.59199,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Indira Gandhi Institute Of Child Health, 8th Main Road, Someshwaranagar, Kanakanapalya, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560029, India"
+  },
+  {
+    "name": "K C General Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.9945787,
+    "longitude": 77.5700558,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "K C General Hospital, 1st Cross Road, Valluvarpuram, Dattatreya Ward, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560003, India"
+  },
+  {
+    "name": "Kidwai Memorial Institute of Oncology",
+    "type": "HOSPITAL",
+    "latitude": 12.9364252,
+    "longitude": 77.5981658,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Kidwai Memorial Institute of Oncology, Dairy Circle Flyover, Lakkasandra, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560029, India"
+  },
+  {
+    "name": "Mallya Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.9679798,
+    "longitude": 77.5950745,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Vydehi Superspeciality Hospital, 2, Vittal Mallya Road, Sampangirama Nagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+  },
+  {
+    "name": "Manipal Hospital, Hebbal",
+    "type": "HOSPITAL",
+    "latitude": 13.0509696,
+    "longitude": 77.5938648,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Manipal Hospital, Bellary Road, Amruthnagar, Byatarayanapura, Bengaluru North City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560024, India"
+  },
+  {
+    "name": "Manipal Hospital, Old Airport Road",
+    "type": "HOSPITAL",
+    "latitude": 12.9596781,
+    "longitude": 77.6492376,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Manipal Hospital, HAL Old Airport Road, Corporation Colony, Kodihalli, Konena Agrahara, Bengaluru Central City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560017, India"
+  },
+  {
+    "name": "Manipal Hospital, Whitefield",
+    "type": "HOSPITAL",
+    "latitude": 12.9581809,
+    "longitude": 77.7453815,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Manipal Hospitals, Whitefield Main Road, Ramagondanahalli, Whitefield, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560066, India"
+  },
+  {
+    "name": "Narayana Institute of Cardiac Sciences",
+    "type": "HOSPITAL",
+    "latitude": 12.808022,
+    "longitude": 77.6947837,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Narayana Hrudayalaya, Hosur Road, Bommasandra, Kitthiganahalli, Kittaganahalli, Anekal, Bengaluru Urban, Karnataka, 560099, India"
+  },
+  {
+    "name": "NIMHANS",
+    "type": "HOSPITAL",
+    "latitude": 12.9431681,
+    "longitude": 77.596475,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Nimhans Convention Center, Doctor M H Marigowda Road, Chinnayanapalya, Lakkasandra, Someshwara Nagara, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560029, India"
+  },
+  {
+    "name": "Rangadore Memorial Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.9539883,
+    "longitude": 77.5711509,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Rangadore Memorial Hospital, D V Gundappa Road, Gandhi Bazaar, Basavanagudi, Sunkenahalli, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560004, India"
+  },
+  {
+    "name": "Sakra World Hospital",
+    "type": "HOSPITAL",
+    "latitude": 13.0239711,
+    "longitude": 77.6465895,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Sakra World Hospital (u/c), Chellakere, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, India"
+  },
+  {
+    "name": "Sparsh Hospital, Infantry Road",
+    "type": "HOSPITAL",
+    "latitude": 12.9833296,
+    "longitude": 77.5945359,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Sparsh Hospital For Advanced Surgeries, Bengaluru Urban, Infantry Road, Vasanth Nagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+  },
+  {
+    "name": "Sri Jayadeva Institute of Cardiovascular Sciences",
+    "type": "HOSPITAL",
+    "latitude": 12.916731,
+    "longitude": 77.5999663,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Jayadeva Hospital, Jayadeva Hospital Underpass, J.P Nagar, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560041, India"
+  },
+  {
+    "name": "St. John's Medical College Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.9296784,
+    "longitude": 77.6183585,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "St.John's Medical College Hospital, Sarjapur Road, Kormangala West, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560034, India"
+  },
+  {
+    "name": "St. Martha's Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.906113,
+    "longitude": 77.542548,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "St. Martha's Hospital, Dr. Vishnuvardhan Road, Subramanyapura, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560061, India"
+  },
+  {
+    "name": "Victoria Hospital",
+    "type": "HOSPITAL",
+    "latitude": 12.9635035,
+    "longitude": 77.5737113,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Victoria Hospital, BGS Flyover, K.R Market, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560018, India"
+  },
+  {
+    "name": "Vydehi Institute of Medical Sciences",
+    "type": "HOSPITAL",
+    "latitude": 12.975494,
+    "longitude": 77.729322,
+    "radiusMeters": 400,
+    "weight": 1.6,
+    "city": "Bengaluru",
+    "matchedName": "Vydehi Institute Of Medical Sciences And Research Centre, 2nd B Road, Pattanduru Agrahara, S.M Krishna Ward, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560066, India"
+  },
+  {
+    "name": "Baldwin Boys High School",
+    "type": "SCHOOL",
+    "latitude": 12.9623723,
+    "longitude": 77.6061827,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Baldwin Boys High School, Serpentine Street, Arab Lines, Ashok Nagar, Ashokanagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560025, India"
+  },
+  {
+    "name": "Baldwin Girls High School",
+    "type": "SCHOOL",
+    "latitude": 12.9642078,
+    "longitude": 77.6002824,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Baldwin Girls' High School, Rhenius Street, Langford Gardens, Richmond Town, Shanthinagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560025, India"
+  },
+  {
+    "name": "Bethany High School",
+    "type": "SCHOOL",
+    "latitude": 12.9406218,
+    "longitude": 77.6209201,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Bethany High School, 19th Main Road, Koramangala 5th Block, A Adugodi, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560095, India"
+  },
+  {
+    "name": "Bishop Cotton Boys' School",
+    "type": "SCHOOL",
+    "latitude": 12.9684294,
+    "longitude": 77.5991901,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Bishop Cotton Boys School, Saint Mark's Road, D'Souza Layout, Shanthala Nagar, Ashokanagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+  },
+  {
+    "name": "Bishop Cotton Girls' School",
+    "type": "SCHOOL",
+    "latitude": 12.9701138,
+    "longitude": 77.6017539,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Bishop Cotton Girls School, Saint Mark's Road, D'Souza Layout, Shanthala Nagar, Ashokanagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+  },
+  {
+    "name": "Carmel School, Padmanabhanagar",
+    "type": "SCHOOL",
+    "latitude": 12.9186374,
+    "longitude": 77.5592095,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Carmel School, Kadirenahalli, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, India"
+  },
+  {
+    "name": "Clarence High School",
+    "type": "SCHOOL",
+    "latitude": 13.0027542,
+    "longitude": 77.6157507,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Clarence High School, Pottery Road, Sagayapura, Richards Town, Sagayapuram, Bengaluru North City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560005, India"
+  },
+  {
+    "name": "Delhi Public School, Bangalore East",
+    "type": "SCHOOL",
+    "latitude": 12.8852692,
+    "longitude": 77.7236928,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Delhi Public School Bangalore East, Sulikunte Road, Sulikunte, Sulakunte, Bangalore East, Bengaluru Urban, Karnataka, 560099, India"
+  },
+  {
+    "name": "Delhi Public School, Bangalore North",
+    "type": "SCHOOL",
+    "latitude": 13.1236378,
+    "longitude": 77.6394921,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Delhi Public School, Bagalur Road, Balaji Layout Phase 2, Sathanuru, Satanuru, Yelahanka taluku, Bengaluru Urban, Karnataka, 562149, India"
+  },
+  {
+    "name": "Delhi Public School, Bangalore South",
+    "type": "SCHOOL",
+    "latitude": 12.8931609,
+    "longitude": 77.5635992,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Delhi Public School, Mango Garden Road, Vasanthapura, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560111, India"
+  },
+  {
+    "name": "Frank Anthony Public School",
+    "type": "SCHOOL",
+    "latitude": 12.9713339,
+    "longitude": 77.6284911,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Frank Anthony Public School, 2nd Cross Cambridge road, Jogupalya, Indiranagar, Jogpalya, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560008, India"
+  },
+  {
+    "name": "Gear Innovative International School",
+    "type": "SCHOOL",
+    "latitude": 12.9175197,
+    "longitude": 77.6973871,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "GEAR Innovative International School, Bellanduru-Doddakannelli Road, Muni Reddy Layout, Doddakannalli, Shivanasamudra Ward, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560103, India"
+  },
+  {
+    "name": "Inventure Academy",
+    "type": "SCHOOL",
+    "latitude": 12.8956335,
+    "longitude": 77.7439548,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Inventure Academy, Varthur - Sarjapur Road, Gunjur, Chikkavaderapura, Heggondahalli, Anekal, Bengaluru Urban, Karnataka, 562125, India"
+  },
+  {
+    "name": "Mallya Aditi International School",
+    "type": "SCHOOL",
+    "latitude": 13.1023616,
+    "longitude": 77.5834652,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Mallya Aditi International School, Yelahanka New Town Main Road, Sector B, Yelahanka New Town, Yelahanka Satellite Town, Bengaluru North City Corporation, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 560064, India"
+  },
+  {
+    "name": "National Public School, HSR Layout",
+    "type": "SCHOOL",
+    "latitude": 12.916537,
+    "longitude": 77.6430183,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "National Public School HSR, 17th C Main Road, MCHS Colony, Sector 4, HSR Layout, Bengaluru South City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560102, India"
+  },
+  {
+    "name": "National Public School, Indiranagar",
+    "type": "SCHOOL",
+    "latitude": 12.9692144,
+    "longitude": 77.6466315,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "National Public School Indiranagar, 12th A Main Road, HAL 2nd Stage, Kodihalli, Indiranagar, Bengaluru Central City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560008, India"
+  },
+  {
+    "name": "National Public School, Rajajinagar",
+    "type": "SCHOOL",
+    "latitude": 12.9840659,
+    "longitude": 77.5497657,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "National Public School, Rajajinagar, 18th B Main Road, Rajajinagar 3rd Block, Rajajinagar, Rama Mandira, Bengaluru West City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560010, India"
+  },
+  {
+    "name": "New Horizon Public School",
+    "type": "SCHOOL",
+    "latitude": 12.9676903,
+    "longitude": 77.6420075,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "New Horizon Public School, 100 Feet Road, Babasaheb Colony, Kodihalli, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560008, India"
+  },
+  {
+    "name": "Oakridge International School",
+    "type": "SCHOOL",
+    "latitude": 12.8873056,
+    "longitude": 77.7525119,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Oakridge International School, Varthur - Sarjapur Road, Gunjur, Thigalachowdadenahalli, Heggondahalli, Anekal, Bengaluru Urban, Karnataka, 562125, India"
+  },
+  {
+    "name": "Poorna Prajna Education Centre",
+    "type": "SCHOOL",
+    "latitude": 12.9726242,
+    "longitude": 77.6564494,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Poorna Prajna Education Centre, 1st Cross Road, New Thippasandra, Bengaluru Central City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560075, India"
+  },
+  {
+    "name": "Ryan International School, Bengaluru",
+    "type": "SCHOOL",
+    "latitude": 12.9647897,
+    "longitude": 77.7240558,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Ryan International School, Lane A, Dream Medows, Kundalahalli, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560037, India"
+  },
+  {
+    "name": "Sophia High School",
+    "type": "SCHOOL",
+    "latitude": 12.9865625,
+    "longitude": 77.5865083,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Sophia High School, 70, Palace Road, Fair Field Layout, High Grounds, Sampangirama Nagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+  },
+  {
+    "name": "Sri Kumaran Children's Home",
+    "type": "SCHOOL",
+    "latitude": 12.9333166,
+    "longitude": 77.5726226,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Sri Kumaran Children's Home, 2nd Cross Road, Yediyuru, Thyagaraja Nagar, Yediyuru, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560004, India"
+  },
+  {
+    "name": "St. Joseph's Boys' High School",
+    "type": "SCHOOL",
+    "latitude": 12.9717322,
+    "longitude": 77.6035354,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "St. Joseph's Boys High School, 27, Museum Road, Shanthala Nagar, Ashokanagar, Bengaluru Central City Corporation, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560025, India"
+  },
+  {
+    "name": "Stonehill International School",
+    "type": "SCHOOL",
+    "latitude": 13.1698465,
+    "longitude": 77.5962044,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Stonehill International School, Sir MVIT College Road, Narayanapura, Bettahalasuru, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 562157, India"
+  },
+  {
+    "name": "The International School Bangalore",
+    "type": "SCHOOL",
+    "latitude": 12.8933721,
+    "longitude": 77.7551642,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "The International School Bangalore, Varthur - Sarjapur Road, Thigalachowdadenahalli, Heggondahalli, Anekal, Bengaluru Urban, Karnataka, 562125, India"
+  },
+  {
+    "name": "Vibgyor High, Marathahalli",
+    "type": "SCHOOL",
+    "latitude": 12.9504106,
+    "longitude": 77.7176251,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Vibgyor High School Road, GJM Sai Garden Layout, Kundalahalli, Bengaluru East City Corporation, Bengaluru, Bangalore East, Bengaluru Urban, Karnataka, 560037, India"
+  },
+  {
+    "name": "Vidyashilp Academy",
+    "type": "SCHOOL",
+    "latitude": 13.1319052,
+    "longitude": 77.5877746,
+    "radiusMeters": 350,
+    "weight": 1.5,
+    "city": "Bengaluru",
+    "matchedName": "Vidyashilp Academy, NITTE Meenakshi College Road, Akash Ward, Bengaluru North City Corporation, Bengaluru, Yelahanka taluku, Bengaluru Urban, Karnataka, 560063, India"
+  }
+]

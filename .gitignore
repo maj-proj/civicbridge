@@ -1,0 +1,48 @@
+# ---------------------------------------------------------------------------
+# Secrets — never commit. .env.example is the template that is safe to share.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# ---------------------------------------------------------------------------
+# Dependencies and build output
+# ---------------------------------------------------------------------------
+node_modules/
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+.vercel/
+
+# Python virtualenv for the detection service (~1.2 GB)
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Runtime artefacts
+# ---------------------------------------------------------------------------
+# Citizen photographs and detection overlays written at runtime
+frontend/public/uploads/
+Garbage YOLOv8/backend/uploads/
+Garbage YOLOv8/backend/annotated/
+Garbage YOLOv8/backend/static/
+
+# ---------------------------------------------------------------------------
+# Tooling and editors
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-error.log*
+.idea/
+.vscode/*
+!.vscode/extensions.json
