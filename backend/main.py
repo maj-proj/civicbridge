@@ -26,6 +26,8 @@ import numpy as np
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from typing import Optional
+from utils.google_maps import get_place_details
 from fastapi.staticfiles import StaticFiles
 from PIL import Image
 from ultralytics import YOLO
@@ -266,7 +268,14 @@ def classes():
 
 @app.post("/predict/garbage")
 @app.post("/predict")  # retained: the frontend's original path
-async def predict_garbage(file: UploadFile = File(...)):
+async def predict_garbage(
+    file: UploadFile = File(...),
+    place_query: Optional[str] = Query(
+        None,
+        description="Optional textual location (e.g., address or landmark) to associate with this detection.",
+    ),
+):
+
     image_path = None
 
     try:
@@ -361,6 +370,20 @@ async def predict_garbage(file: UploadFile = File(...)):
             float(coverage.sum()) / float(image_width * image_height), 4
         )
 
+        # Optional place lookup for garbage detection
+        place_info = None
+        if place_query:
+            place_info = get_place_details(place_query)
+
+        map_url = None
+        if place_info:
+            map_url = (
+                "https://www.google.com/maps/embed/v1/place"
+                f"?key={os.getenv('GOOGLE_MAPS_API_KEY')}"
+                f"&q={place_info['lat']},{place_info['lng']}"
+                "&zoom=15"
+            )
+
         return JSONResponse(
             content={
                 "success": True,
@@ -379,6 +402,8 @@ async def predict_garbage(file: UploadFile = File(...)):
                 "detections": detections,
                 "category_distribution": category_distribution,
                 "annotated_image_url": annotated_url,
+                "place": place_info,
+                "place_map_url": map_url,
             }
         )
 
@@ -411,6 +436,10 @@ async def predict_pothole(
         False,
         description="Also return the overlay inline as base64. Off by default: "
         "a multi-megabyte string in JSON is far heavier than a URL.",
+    ),
+    place_query: Optional[str] = Query(
+        None,
+        description="Optional textual location (e.g., address or landmark) to associate with this detection.",
     ),
 ):
     image_path = None
@@ -458,6 +487,7 @@ async def predict_pothole(
                     detections.append(
                         {
                             "id": len(detections) + 1,
+
                             "class": class_name,
                             "confidence": round(confidence, 2),
                             "severity_score": severity["severity_score"],
@@ -482,7 +512,55 @@ async def predict_pothole(
         else:
             worst_level = "High"
 
+        # Optional place lookup for pothole detection
+        place_info = None
+        if place_query:
+            place_info = get_place_details(place_query)
+
+        map_url = None
+        if place_info:
+            map_url = (
+                "https://www.google.com/maps/embed/v1/place"
+                f"?key={os.getenv('GOOGLE_MAPS_API_KEY')}"
+                f"&q={place_info['lat']},{place_info['lng']}"
+                "&zoom=15"
+            )
+
         payload = {
+            "success": True,
+            "issue_type": "pothole",
+            "image_analysis": {
+                "total_objects_detected": total_objects,
+                "issue_detected": total_objects > 0,
+                "total_area_ratio": total_area_ratio,
+                "image_width": image_width,
+                "image_height": image_height,
+                # The worst single defect in the frame, so a caller does not
+                # have to walk the detections to find it.
+                "worst_severity_score": worst_score if total_objects else 0.0,
+                "worst_severity_level": worst_level if total_objects else "Low",
+            },
+            "detections": detections,
+            "annotated_image_url": annotated_url,
+            "place": place_info,
+            "place_map_url": map_url,
+
+            "success": True,
+            "issue_type": "pothole",
+            "image_analysis": {
+                "total_objects_detected": total_objects,
+                "issue_detected": total_objects > 0,
+                "total_area_ratio": total_area_ratio,
+                "image_width": image_width,
+                "image_height": image_height,
+                # The worst single defect in the frame, so a caller does not
+                # have to walk the detections to find it.
+                "worst_severity_score": worst_score if total_objects else 0.0,
+                "worst_severity_level": worst_level if total_objects else "Low",
+            },
+            "detections": detections,
+            "annotated_image_url": annotated_url,
+
             "success": True,
             "issue_type": "pothole",
             "image_analysis": {

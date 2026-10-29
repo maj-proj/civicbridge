@@ -25,6 +25,8 @@ export interface ListOptions {
   statuses?: ReportStatus[];
   sort?: ReportSort;
   limit?: number;
+  /** Filter reports to those created by the given anonymousId (session) */
+  reporterId?: string | null;
 }
 
 export interface ListResult {
@@ -86,6 +88,7 @@ export async function listReports(
     ...(options.statuses && options.statuses.length > 0
       ? { status: { in: options.statuses } }
       : {}),
+    ...(options.reporterId ? { anonymousId: options.reporterId } : {}),
   };
 
   const orderBy: Prisma.CivicReportOrderByWithRelationInput[] =
