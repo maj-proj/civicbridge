@@ -25,14 +25,16 @@ import {
   rateLimit,
 } from "@/lib/rateLimit";
 import { uploadEvidenceImage } from "@/lib/storage/uploadImage";
-import { detectGarbage } from "@/lib/vision/detectGarbage";
-import { computePriority } from "@/lib/priority/computePriority";
 import { reverseGeocode } from "@/lib/geo/reverseGeocode";
 import { resolveZoneSensitivity } from "@/lib/geo/zoneSensitivity";
 import { countRecentNearbyReports } from "@/lib/geo/recurrence";
 import { isValidCoordinate } from "@/lib/geo/haversine";
 import { matchZoneMention } from "@/lib/geo/zoneTextMatch";
 import { PRIORITY_LABEL_TEXT } from "@/lib/priority/computePriority";
+import type {
+  PriorityContext,
+  PriorityResult,
+} from "@/lib/priority/computePriority";
 import type { Prisma } from "@prisma/client";
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -51,7 +53,40 @@ export interface TitleInput {
   dominantCategory: string | null;
   wardName: string | null;
   locationText: string | null;
+  /** Worst severity level, on tracks that measure one. */
+  severityLevel?: string | null;
 }
+
+/**
+ * What a track's detector hands back once it has run and scored.
+ *
+ * Garbage and pothole detect different things and score them differently,
+ * so each track supplies this rather than the pipeline branching on type.
+ * Everything downstream — geocoding, zone sensitivity, recurrence, routing,
+ * the notice — is identical for both.
+ */
+export interface TrackAnalysis {
+  /** Served by the detection service; mirrored to object storage later. */
+  annotatedImageUrl: string | null;
+  /** Echoed to the client verbatim. */
+  raw: unknown;
+  totalObjects: number;
+  totalCategories: number | null;
+  maxConfidence: number | null;
+  /** Stored on CivicReport.detections. */
+  detections: unknown;
+  /** Stored on CivicReport.categoryDistribution; empty on tracks without one. */
+  categoryDistribution: unknown;
+  /** Drives routing and the title on tracks that classify material. */
+  dominantCategory: string | null;
+  /** Worst severity level, on tracks that measure one. */
+  severityLevel: string | null;
+  score(context: PriorityContext): PriorityResult;
+}
+
+export type TrackOutcome =
+  | { ok: true; analysis: TrackAnalysis }
+  | { ok: false; error: string };
 
 export interface IssueReportConfig {
   /** Persisted on CivicReport.type. */
@@ -59,6 +94,8 @@ export interface IssueReportConfig {
   /** 400 message when no photograph is attached. */
   missingImageError: string;
   buildTitle(input: TitleInput): string;
+  /** Runs this track's model and returns its scorer. */
+  analyse(file: File): Promise<TrackOutcome>;
   /**
    * Added to every submission's warnings while this track has no trained
    * model of its own. The result panel surfaces it, so a citizen is never
@@ -168,8 +205,8 @@ export async function submitIssueReport(
     warnings.push("The photograph could not be stored, but the report was kept.");
   }
 
-  // --- detection -----------------------------------------------------------
-  const detection = await detectGarbage(file);
+  // --- detection (whichever model this track uses) -------------------------
+  const detection = await config.analyse(file);
 
   if (!detection.ok) {
     warnings.push(
@@ -177,6 +214,8 @@ export async function submitIssueReport(
         "without a priority score and is queued for re-analysis."
     );
   }
+
+  const analysis = detection.ok ? detection.analysis : null;
 
   // --- location context (independent lookups, run together) ----------------
   const [geo, coordinateSensitivity, recurrenceCount] = hasCoords
@@ -226,31 +265,24 @@ export async function submitIssueReport(
     }
   }
 
-  // --- score ---------------------------------------------------------------
-  const priority = detection.ok
-    ? computePriority(detection.data, {
+  // --- score (each track scores what its own model measured) ---------------
+  const priority = analysis
+    ? analysis.score({
         zoneMultiplier: sensitivity.multiplier,
         triggeringPoi: sensitivity.triggeringPoi,
         recurrenceCount,
       })
     : null;
 
-  const analysis = detection.ok ? detection.data : null;
-
-  const categoryDistribution = analysis?.category_distribution ?? [];
-  const dominantCategory =
-    [...categoryDistribution].sort((a, b) => b.percentage - a.percentage)[0]
-      ?.category ?? null;
-
-  const maxConfidence =
-    analysis?.detections.reduce((max, row) => Math.max(max, row.confidence), 0) ??
-    null;
+  const dominantCategory = analysis?.dominantCategory ?? null;
+  const maxConfidence = analysis?.maxConfidence ?? null;
 
   const title = config.buildTitle({
-    totalObjects: analysis?.image_analysis.total_objects_detected ?? 0,
+    totalObjects: analysis?.totalObjects ?? 0,
     dominantCategory,
     wardName: geo.wardName,
     locationText,
+    severityLevel: analysis?.severityLevel ?? null,
   });
 
   // --- respond without persisting when there is no database ----------------
@@ -268,13 +300,13 @@ export async function submitIssueReport(
         title,
         status: "SUBMITTED",
         imageUrl,
-        annotatedImageUrl: detection.ok ? detection.annotatedImageUrl : null,
+        annotatedImageUrl: analysis?.annotatedImageUrl ?? null,
         address: geo.address,
         wardName: geo.wardName,
         latitude,
         longitude,
       },
-      analysis,
+      analysis: analysis?.raw ?? null,
       priority: priority
         ? {
             score: priority.score,
@@ -298,7 +330,7 @@ export async function submitIssueReport(
         anonymousId: session?.id ?? null,
 
         imageUrl,
-        annotatedImageUrl: detection.ok ? detection.annotatedImageUrl : null,
+        annotatedImageUrl: analysis?.annotatedImageUrl ?? null,
 
         latitude,
         longitude,
@@ -308,10 +340,11 @@ export async function submitIssueReport(
 
         // Holds the reporter's own classification for either track.
         wasteType: wasteType ?? dominantCategory,
-        detections: (analysis?.detections ?? []) as unknown as Prisma.InputJsonValue,
-        categoryDistribution: categoryDistribution as unknown as Prisma.InputJsonValue,
-        totalObjects: analysis?.image_analysis.total_objects_detected ?? null,
-        totalCategories: analysis?.image_analysis.total_categories_detected ?? null,
+        detections: (analysis?.detections ?? []) as Prisma.InputJsonValue,
+        categoryDistribution: (analysis?.categoryDistribution ??
+          []) as Prisma.InputJsonValue,
+        totalObjects: analysis?.totalObjects ?? null,
+        totalCategories: analysis?.totalCategories ?? null,
         maxConfidence,
 
         priorityScore: priority?.score ?? null,
@@ -372,7 +405,7 @@ export async function submitIssueReport(
         longitude: created.longitude,
         createdAt: created.createdAt,
       },
-      analysis,
+      analysis: analysis?.raw ?? null,
       priority: priority
         ? {
             score: priority.score,
@@ -392,7 +425,7 @@ export async function submitIssueReport(
           "The report was analysed but could not be saved. Run 'npx prisma migrate dev' " +
           "if the schema has not been applied yet.",
         detail: error instanceof Error ? error.message : String(error),
-        analysis,
+        analysis: analysis?.raw ?? null,
       },
       { status: 500 }
     );

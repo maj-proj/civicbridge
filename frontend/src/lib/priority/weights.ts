@@ -116,6 +116,26 @@ export const PRIORITY_BANDS = {
 /** Default multiplier when no sensitive zone is nearby. */
 export const NEUTRAL_ZONE_MULTIPLIER = 1.0;
 
+// ---------------------------------------------------------------------------
+// Pothole track
+// ---------------------------------------------------------------------------
+
+/**
+ * Severity carries more than extent: one deep hole in a carriageway is a
+ * vehicle hazard, while a scatter of shallow cracks is maintenance.
+ */
+export const POTHOLE_SUBSCORE_WEIGHTS = { severity: 0.55, extent: 0.45 } as const;
+
+/** Defect count at which the extent curve is ~63% of the way to saturated. */
+export const POTHOLE_COUNT_SATURATION = 4;
+
+/**
+ * Share of the frame covered by defects that scores full marks on area.
+ * Lower than the waste equivalent because a road photographed from standing
+ * height shows far less of the defect than a dump pile fills a frame.
+ */
+export const POTHOLE_AREA_FULL_SCORE = 0.25;
+
 /**
  * How much of a zone's escalation a *mention* in the reporter's own text is
  * worth, compared with a measured distance from real coordinates.

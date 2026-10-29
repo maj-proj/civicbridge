@@ -72,7 +72,9 @@ interface IssueCopy {
   ask: string;
   /** Whether the object count and material breakdown are meaningful. */
   showComposition: boolean;
-  /** Appended to the assessment block when detection does not cover this track. */
+  /** Whether the scoring factors are phrased for this track. */
+  showFactors: boolean;
+  /** Appended to the assessment block, where the method needs qualifying. */
   caveat?: string;
 }
 
@@ -86,6 +88,7 @@ const ISSUE_COPY: Record<string, IssueCopy> = {
       "convenience. Please reply to this message with an acknowledgement or a " +
       "status update so the report can be tracked to closure.",
     showComposition: true,
+    showFactors: true,
   },
   POTHOLE: {
     noun: "road surface defect",
@@ -95,11 +98,15 @@ const ISSUE_COPY: Record<string, IssueCopy> = {
       "We request a site inspection and repair at your earliest convenience. " +
       "Please reply to this message with an acknowledgement or a status update " +
       "so the report can be tracked to closure.",
+    // A road surface has no material composition, but the defects are
+    // measured, so the scoring factors do apply.
     showComposition: false,
+    showFactors: true,
     caveat:
-      "No automated defect measurement is available for road reports. The " +
-      "priority shown is provisional and the photograph requires assessment " +
-      "by an engineer.",
+      "Defect severity is estimated from the share of the photograph each " +
+      "defect fills, which cannot distinguish a close-up of a small hole " +
+      "from a distant view of a large one. Treat it as advisory and confirm " +
+      "the dimensions on site.",
   },
 };
 
@@ -175,13 +182,13 @@ function renderBody(
     copy.showComposition ? "" : null,
     // The scoring factors are phrased in terms of waste volume and material
     // severity, so they are only meaningful on the track the model serves.
-    copy.showComposition ? "  Scoring factors:" : null,
-    ...(copy.showComposition
+    copy.showFactors ? "  Scoring factors:" : null,
+    ...(copy.showFactors
       ? input.breakdown.factors.map(
           (factor) => `  - ${factor.label}: ${factor.detail}`
         )
       : []),
-    copy.showComposition ? "" : null,
+    copy.showFactors ? "" : null,
   ];
 
   if (input.citizenDescription?.trim()) {
@@ -287,7 +294,7 @@ function renderHtmlBody(
           .join("")
       : "";
 
-  const factors = copy.showComposition
+  const factors = copy.showFactors
     ? input.breakdown.factors
         .map(
           (factor) =>
@@ -495,15 +502,17 @@ export async function composeAuthorityEmail(
             composition: input.categoryDistribution.map(
               (row) => `${row.category} ${row.percentage.toFixed(0)}%`
             ),
-            keyFindings: input.breakdown.summary,
           }
+        : {}),
+      ...(copy.showFactors
+        ? { keyFindings: input.breakdown.summary }
         : {
             detectionAvailable: false,
-            note: copy.caveat,
             instruction:
               "Do not describe the contents of the photograph; no detection " +
               "data is available for this report.",
           }),
+      ...(copy.caveat ? { methodCaveat: copy.caveat } : {}),
     };
 
     const response = await fetch(GROQ_ENDPOINT, {
