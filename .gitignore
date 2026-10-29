@@ -31,9 +31,7 @@ __pycache__/
 # ---------------------------------------------------------------------------
 # Citizen photographs and detection overlays written at runtime
 frontend/public/uploads/
-Garbage YOLOv8/backend/uploads/
-Garbage YOLOv8/backend/annotated/
-Garbage YOLOv8/backend/static/
+backend/uploads/
 
 # ---------------------------------------------------------------------------
 # Tooling and editors
