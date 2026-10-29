@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { Crosshair, MapPin, Search, AlertCircle, Info, RefreshCw } from "lucide-react";
+import { Crosshair, MapPin, AlertCircle, Info } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Badge } from "@/components/ui/badge";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Field,
   FieldDescription,
@@ -15,6 +14,7 @@ import {
 import {
   loadGoogleMapsScript,
   getGoogleMapsApiKey,
+  onGoogleMapsAuthFailure,
 } from "@/lib/geo/googleMapsLoader";
 
 interface LocationMapPickerProps {
@@ -96,6 +96,13 @@ export function LocationMapPicker({
 
     let isCancelled = false;
 
+    const cleanupAuth = onGoogleMapsAuthFailure(() => {
+      if (!isCancelled) {
+        setMapsState("error");
+        setErrorMessage("Google Maps authentication failed: check your API key, domain restrictions, and billing in Google Cloud Console.");
+      }
+    });
+
     loadGoogleMapsScript()
       .then((googleInstance) => {
         if (isCancelled) return;
@@ -160,7 +167,7 @@ export function LocationMapPicker({
         });
 
         // Initialize Places Autocomplete
-        if (searchInputRef.current) {
+        if (searchInputRef.current && googleInstance.maps.places?.Autocomplete) {
           const autocomplete = new googleInstance.maps.places.Autocomplete(
             searchInputRef.current,
             {
@@ -203,12 +210,13 @@ export function LocationMapPicker({
         setErrorMessage(
           err?.message === "NO_API_KEY"
             ? "No Google Maps API Key provided."
-            : "Could not load Google Maps."
+            : err?.message || "Could not load Google Maps."
         );
       });
 
     return () => {
       isCancelled = true;
+      cleanupAuth();
       if (markerRef.current) {
         markerRef.current.setMap(null);
       }
