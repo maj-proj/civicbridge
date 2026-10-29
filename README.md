@@ -17,7 +17,7 @@ detection follows the same pipeline and is not built yet.
         ▼
  ┌──────────────────┐   multipart   ┌───────────────────────────┐
  │  Next.js         │──────────────▶│  FastAPI + YOLOv8         │
- │  /api/reports/   │               │  POST /predict            │
+ │  /api/reports/   │               │  POST /predict/garbage    │
  │     garbage      │◀──────────────│  object counts, classes,  │
  └────────┬─────────┘   JSON        │  category distribution    │
           │                         └───────────────────────────┘
@@ -51,7 +51,7 @@ Two processes. Start the vision service first.
 ### 1. Vision service
 
 ```bash
-cd "Garbage YOLOv8/backend"
+cd backend
 python -m venv venv
 venv/Scripts/activate          # Windows;  source venv/bin/activate on Unix
 pip install -r requirements.txt
@@ -59,6 +59,18 @@ uvicorn main:app --reload --port 8000
 ```
 
 Check it: <http://localhost:8000/health>
+
+One service serves both detection tracks:
+
+| Endpoint | Purpose |
+|---|---|
+| `POST /predict/garbage` | Garbage detection. Alias: `POST /predict` |
+| `POST /predict/pothole` | Pothole detection. Alias: `POST /detect/pothole` |
+| `GET /classes` | The garbage model's classes and their waste categories |
+| `GET /health` | Liveness, per model |
+
+Both return an `annotated_image_url` served from `/static`; the pothole route
+can also inline the overlay as base64 with `?include_base64=true`.
 
 `GET /classes` lists the model's real class names and the waste category each
 one maps to — use it to verify the weights in
