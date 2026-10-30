@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import {
   AlertTriangle,
   CarFront,
@@ -19,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Spinner } from "@/components/ui/spinner";
+import { cn } from "@/lib/utils";
 import {
   PERSONAL_EMERGENCY_OPTIONS,
   EmergencyOptionConfig,
@@ -178,11 +180,28 @@ export function SosModal({ isOpen, onClose }: SosModalProps) {
     setSelectedOption(null);
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl overflow-hidden rounded-2xl border border-destructive/40 bg-card shadow-2xl">
+    <DialogPrimitive.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogPrimitive.Portal>
+        {/* Backdrop */}
+        <DialogPrimitive.Backdrop
+          className={cn(
+            "fixed inset-0 z-50 bg-black/70 backdrop-blur-sm",
+            "transition-opacity duration-200",
+            "data-starting-style:opacity-0 data-ending-style:opacity-0"
+          )}
+        />
+        {/* Centered panel */}
+        <DialogPrimitive.Popup
+          className={cn(
+            "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
+            "w-[calc(100%-2rem)] max-w-xl max-h-[90vh] overflow-y-auto",
+            "rounded-2xl border border-destructive/40 bg-card shadow-2xl",
+            "transition-all duration-200",
+            "data-starting-style:opacity-0 data-starting-style:scale-95",
+            "data-ending-style:opacity-0 data-ending-style:scale-95"
+          )}
+        >
         {/* Header Ribbon */}
         <div className="flex items-center justify-between border-b border-destructive/20 bg-destructive/10 px-6 py-4">
           <div className="flex items-center gap-3">
@@ -415,7 +434,9 @@ export function SosModal({ isOpen, onClose }: SosModalProps) {
             </>
           )}
         </div>
-      </div>
-    </div>
+        </DialogPrimitive.Popup>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
   );
 }
+

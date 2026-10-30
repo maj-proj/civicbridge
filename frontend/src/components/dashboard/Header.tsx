@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { LogOut, Menu, User as UserIcon } from "lucide-react";
-import { SosButton } from "@/components/dashboard/sos/SosButton";
 import { useAuthSession } from "@/lib/useAuthSession";
 import { useSafeClerk } from "@/components/ClerkWrapper";
 import { Button } from "@/components/ui/button";
@@ -41,7 +40,6 @@ export function DashboardHeader({
       </Button>
 
       <div className="ml-auto flex items-center gap-2">
-        <SosButton />
         {loading ? (
           <Skeleton className="h-8 w-8 rounded-full" />
         ) : clerk?.isSignedIn ? (
