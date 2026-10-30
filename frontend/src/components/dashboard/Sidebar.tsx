@@ -18,6 +18,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { SosButton } from "@/components/dashboard/sos/SosButton";
 
 const NAV: Array<{
   group?: string;
@@ -122,19 +123,29 @@ export function DashboardSidebar({
 }) {
   return (
     <>
+      {/* Desktop sidebar */}
       <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r bg-sidebar md:flex">
         <Brand />
         <NavLinks />
+        {/* SOS button pinned at bottom */}
+        <div className="mt-auto border-t p-3">
+          <SosButton />
+        </div>
       </aside>
 
+      {/* Mobile sheet */}
       <Sheet open={Boolean(isOpen)} onOpenChange={(open) => !open && onClose?.()}>
-        <SheetContent side="left" className="w-64 p-0">
+        <SheetContent side="left" className="flex w-64 flex-col p-0">
           <SheetTitle className="sr-only">Navigation</SheetTitle>
           <SheetDescription className="sr-only">
             CivicBridge dashboard sections
           </SheetDescription>
           <Brand />
           <NavLinks onNavigate={onClose} />
+          {/* SOS button pinned at bottom */}
+          <div className="mt-auto border-t p-3">
+            <SosButton />
+          </div>
         </SheetContent>
       </Sheet>
     </>
