@@ -7,6 +7,8 @@ interface ClerkUserContextType {
   isLoaded: boolean;
   isSignedIn: boolean;
   user: {
+    fullName?: string | null;
+    firstName?: string | null;
     primaryEmailAddress?: {
       emailAddress?: string;
     };
@@ -36,6 +38,8 @@ function ClerkBridge({ children }: { children: React.ReactNode }) {
     isSignedIn: Boolean(clerk.isSignedIn),
     user: clerk.user
       ? {
+          fullName: clerk.user.fullName,
+          firstName: clerk.user.firstName,
           primaryEmailAddress: {
             emailAddress: clerk.user.primaryEmailAddress?.emailAddress,
           },
